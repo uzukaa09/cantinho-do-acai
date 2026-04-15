@@ -324,6 +324,10 @@
       line-height: 1.2;
       margin-bottom: .9rem;
     }
+    .sec-titulo em {
+      font-style: italic;
+      color: var(--verde);
+    }
 
     .sec-sub {
       text-align: center;
@@ -387,6 +391,212 @@
       line-height: 1.75;
     }
 
+    /* ─── PRODUTOS ──────────────────────────────────────────── */
+    .produtos {
+      padding: 7rem 6% 6rem;
+      background: var(--bege);
+      position: relative;
+    }
+
+    .produtos::before {
+      content: '';
+      position: absolute;
+      top: -52px; left: 0; right: 0;
+      height: 54px;
+      background: var(--bege);
+      clip-path: ellipse(52% 100% at 50% 100%);
+    }
+
+    .produto-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .produto-card {
+      background: var(--branco);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(46,13,78,.06);
+      box-shadow: 0 4px 28px rgba(46,13,78,.06);
+      transition: transform .3s, box-shadow .3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .produto-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 50px rgba(46,13,78,.12);
+    }
+
+    .produto-imagem {
+      background: linear-gradient(135deg, var(--roxo-claro) 0%, var(--bege) 100%);
+      padding: 2.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      min-height: 140px;
+    }
+
+    .produto-badge {
+      position: absolute;
+      top: .9rem;
+      right: .9rem;
+      background: var(--roxo);
+      color: var(--branco);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: .22rem .7rem;
+      border-radius: 50px;
+    }
+    .produto-badge.verde { background: var(--verde); }
+
+    .produto-info {
+      padding: 1.5rem 1.6rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .produto-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--roxo-escuro);
+      margin-bottom: .45rem;
+    }
+
+    .produto-info > p {
+      font-size: .86rem;
+      font-weight: 300;
+      color: var(--texto-medio);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 1.3rem;
+    }
+
+    .produto-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+    }
+
+    .produto-preco {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--roxo-escuro);
+      line-height: 1;
+    }
+    .produto-preco small {
+      font-family: 'Poppins', sans-serif;
+      font-size: .7rem;
+      font-weight: 400;
+      color: var(--texto-medio);
+      display: block;
+      margin-bottom: .2rem;
+    }
+
+    .btn-pedir {
+      background: var(--roxo);
+      color: var(--branco);
+      font-family: 'Poppins', sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: .55rem 1.2rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      white-space: nowrap;
+    }
+    .btn-pedir:hover {
+      background: var(--roxo-medio);
+      transform: translateY(-1px);
+    }
+
+    /* ─── SLOGAN ─────────────────────────────────────────────── */
+    .slogan {
+      padding: 7rem 6%;
+      background: linear-gradient(140deg, var(--roxo-escuro) 0%, #5A1F8A 55%, #3D0B6B 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slogan::before {
+      content: '';
+      position: absolute;
+      width: 550px; height: 550px;
+      background: radial-gradient(circle, rgba(139,79,200,.22) 0%, transparent 68%);
+      top: -120px; left: -120px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .slogan::after {
+      content: '';
+      position: absolute;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(46,125,50,.15) 0%, transparent 68%);
+      bottom: -80px; right: -60px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .slogan-aspas {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 9rem;
+      line-height: .55;
+      color: rgba(255,255,255,.07);
+      margin-bottom: .8rem;
+      user-select: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .slogan-texto {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 3.4rem);
+      font-weight: 700;
+      color: var(--creme);
+      line-height: 1.22;
+      max-width: 760px;
+      margin: 0 auto 1.6rem;
+      position: relative;
+      z-index: 1;
+    }
+    .slogan-texto em {
+      font-style: italic;
+      color: var(--verde-claro);
+    }
+
+    .slogan-separador {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--roxo-medio), var(--verde-claro));
+      margin: 0 auto 1.4rem;
+      border-radius: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .slogan-autor {
+      font-size: .8rem;
+      font-weight: 600;
+      color: rgba(253,246,227,.45);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
     /* ─── RESPONSIVO ─────────────────────────────────────────── */
     @media (max-width: 920px) {
       .hero-visual { display: none; }
@@ -403,6 +613,9 @@
       .nav-links { display: none; }
       .hero { padding: 6rem 5% 5rem; }
       .destaques { padding: 5rem 5% 4rem; }
+      .produtos { padding: 5rem 5% 4rem; }
+      .slogan { padding: 5rem 5%; }
+      .slogan-aspas { font-size: 6rem; }
     }
   </style>
 </head>
@@ -412,7 +625,7 @@
   <nav>
     <div class="logo">Cantinho do <span>Açaí</span></div>
     <ul class="nav-links">
-      <li><a href="#">Cardápio</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
       <li><a href="#">Sobre Nós</a></li>
       <li><a href="#">Localização</a></li>
       <li><a href="#" class="btn-nav">Fazer Pedido</a></li>
@@ -431,7 +644,7 @@
         em casa a cada colherada.
       </p>
       <div class="hero-actions">
-        <a href="#destaques" class="btn-primary">Ver Cardápio →</a>
+        <a href="#cardapio" class="btn-primary">Ver Cardápio →</a>
         <a href="#destaques" class="btn-outline">Nossa História</a>
       </div>
     </div>
@@ -481,6 +694,136 @@
 
     </div>
 
+  </section>
+
+  <!-- ══ PRODUTOS ═══════════════════════════════════════════ -->
+  <section class="produtos" id="cardapio">
+
+    <p class="sec-label">Nosso Cardápio</p>
+    <h2 class="sec-titulo">Escolha a sua <em>tigela</em></h2>
+    <p class="sec-sub">
+      Cada combinação foi criada para oferecer sabor, energia e muito prazer em cada colherada.
+    </p>
+
+    <div class="produto-grid">
+
+      <div class="produto-card">
+        <div class="produto-imagem">
+          🍨
+          <span class="produto-badge">⭐ Mais Pedido</span>
+        </div>
+        <div class="produto-info">
+          <h3>Açaí Tradicional</h3>
+          <p>Base cremosa de açaí puro, granola crocante, banana em rodelas e fio de mel.</p>
+          <div class="produto-footer">
+            <div class="produto-preco">
+              <small>a partir de</small>
+              R$ 18,90
+            </div>
+            <button class="btn-pedir">Pedir →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="produto-card">
+        <div class="produto-imagem" style="background: linear-gradient(135deg,#EDE0F7 0%,#F5E6FF 100%);">
+          🍇
+          <span class="produto-badge verde">Novo</span>
+        </div>
+        <div class="produto-info">
+          <h3>Açaí Premium</h3>
+          <p>Base dupla cremosa, frutas vermelhas, granola especial artesanal e leite condensado.</p>
+          <div class="produto-footer">
+            <div class="produto-preco">
+              <small>a partir de</small>
+              R$ 26,90
+            </div>
+            <button class="btn-pedir">Pedir →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="produto-card">
+        <div class="produto-imagem" style="background: linear-gradient(135deg,#E8F5E9 0%,#F0FFF0 100%);">
+          🌴
+        </div>
+        <div class="produto-info">
+          <h3>Açaí Tropical</h3>
+          <p>Base com toque de coco, manga, abacaxi e farofa de tapioca. Uma viagem ao trópico.</p>
+          <div class="produto-footer">
+            <div class="produto-preco">
+              <small>a partir de</small>
+              R$ 24,90
+            </div>
+            <button class="btn-pedir">Pedir →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="produto-card">
+        <div class="produto-imagem" style="background: linear-gradient(135deg,#FFF3E0 0%,#FFF8E1 100%);">
+          💪
+          <span class="produto-badge" style="background:#B05E00;">Fitness</span>
+        </div>
+        <div class="produto-info">
+          <h3>Açaí Power</h3>
+          <p>Base proteica, pasta de amendoim, granola fitness, banana e toque de canela.</p>
+          <div class="produto-footer">
+            <div class="produto-preco">
+              <small>a partir de</small>
+              R$ 28,90
+            </div>
+            <button class="btn-pedir">Pedir →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="produto-card">
+        <div class="produto-imagem" style="background: linear-gradient(135deg,#FCE4EC 0%,#FFF0F5 100%);">
+          🍓
+        </div>
+        <div class="produto-info">
+          <h3>Açaí Kids</h3>
+          <p>Tigela pequena e fofa: base suave de açaí, morangos frescos, granola e mel.</p>
+          <div class="produto-footer">
+            <div class="produto-preco">
+              <small>a partir de</small>
+              R$ 14,90
+            </div>
+            <button class="btn-pedir">Pedir →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="produto-card">
+        <div class="produto-imagem" style="background: linear-gradient(135deg,#E3F2FD 0%,#EDE7F6 100%);">
+          🥤
+        </div>
+        <div class="produto-info">
+          <h3>Smoothie de Açaí</h3>
+          <p>Batido cremoso com leite de coco, frutas vermelhas e açaí. Refrescante e energizante.</p>
+          <div class="produto-footer">
+            <div class="produto-preco">
+              <small>a partir de</small>
+              R$ 16,90
+            </div>
+            <button class="btn-pedir">Pedir →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ SLOGAN ═════════════════════════════════════════════ -->
+  <section class="slogan">
+    <span class="slogan-aspas">"</span>
+    <p class="slogan-texto">
+      Do Pará para o seu coração —<br>
+      <em>puro açaí,</em> puro amor.
+    </p>
+    <div class="slogan-separador"></div>
+    <span class="slogan-autor">Cantinho do Açaí</span>
   </section>
 
 </body>
