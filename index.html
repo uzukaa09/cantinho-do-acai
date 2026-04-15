@@ -391,14 +391,14 @@
       line-height: 1.75;
     }
 
-    /* ─── PRODUTOS ──────────────────────────────────────────── */
-    .produtos {
+    /* ─── MONTE SEU AÇAÍ ────────────────────────────────────── */
+    .monte {
       padding: 7rem 6% 6rem;
       background: var(--bege);
       position: relative;
     }
 
-    .produtos::before {
+    .monte::before {
       content: '';
       position: absolute;
       top: -52px; left: 0; right: 0;
@@ -407,118 +407,114 @@
       clip-path: ellipse(52% 100% at 50% 100%);
     }
 
-    .produto-grid {
+    .monte-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.8rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
       max-width: 1080px;
       margin: 0 auto;
+      align-items: start;
     }
 
-    .produto-card {
+    .monte-bloco {
       background: var(--branco);
-      border-radius: 20px;
+      border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(46,13,78,.06);
-      box-shadow: 0 4px 28px rgba(46,13,78,.06);
-      transition: transform .3s, box-shadow .3s;
-      display: flex;
-      flex-direction: column;
-    }
-    .produto-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 14px 50px rgba(46,13,78,.12);
+      border: 1px solid rgba(46,13,78,.07);
+      box-shadow: 0 4px 28px rgba(46,13,78,.07);
     }
 
-    .produto-imagem {
-      background: linear-gradient(135deg, var(--roxo-claro) 0%, var(--bege) 100%);
-      padding: 2.2rem 1.5rem;
+    .monte-cabecalho {
+      padding: 1.5rem 1.8rem;
+      background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo));
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 5rem;
-      position: relative;
-      min-height: 140px;
+      gap: .9rem;
+    }
+    .monte-cabecalho.verde {
+      background: linear-gradient(135deg, #1B5E20, var(--verde));
     }
 
-    .produto-badge {
-      position: absolute;
-      top: .9rem;
-      right: .9rem;
-      background: var(--roxo);
-      color: var(--branco);
-      font-size: .68rem;
-      font-weight: 600;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      padding: .22rem .7rem;
-      border-radius: 50px;
-    }
-    .produto-badge.verde { background: var(--verde); }
+    .monte-cabecalho-icone { font-size: 2rem; }
 
-    .produto-info {
-      padding: 1.5rem 1.6rem 1.8rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .produto-info h3 {
+    .monte-cabecalho h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--roxo-escuro);
-      margin-bottom: .45rem;
+      color: var(--creme);
+      line-height: 1.2;
+    }
+    .monte-cabecalho p {
+      font-size: .75rem;
+      color: rgba(253,246,227,.55);
+      margin-top: .1rem;
     }
 
-    .produto-info > p {
-      font-size: .86rem;
-      font-weight: 300;
-      color: var(--texto-medio);
-      line-height: 1.7;
-      flex: 1;
-      margin-bottom: 1.3rem;
+    .monte-corpo {
+      padding: 1.6rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
     }
 
-    .produto-footer {
+    .monte-grupo-titulo {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--roxo);
+      margin-bottom: .6rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: .5rem;
     }
-
-    .produto-preco {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--roxo-escuro);
-      line-height: 1;
+    .monte-grupo-titulo::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(46,13,78,.1);
     }
-    .produto-preco small {
-      font-family: 'Poppins', sans-serif;
-      font-size: .7rem;
+    .monte-grupo-titulo.verde { color: var(--verde); }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .pill {
+      font-size: .76rem;
       font-weight: 400;
       color: var(--texto-medio);
-      display: block;
-      margin-bottom: .2rem;
+      background: var(--creme);
+      border: 1px solid rgba(46,13,78,.1);
+      padding: .25rem .7rem;
+      border-radius: 50px;
+      line-height: 1.5;
     }
 
-    .btn-pedir {
-      background: var(--roxo);
-      color: var(--branco);
-      font-family: 'Poppins', sans-serif;
-      font-size: .82rem;
+    .pill.tamanho {
       font-weight: 600;
-      padding: .55rem 1.2rem;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      transition: background .2s, transform .2s;
-      white-space: nowrap;
+      color: var(--roxo);
+      border-color: rgba(107,47,160,.35);
+      background: var(--roxo-claro);
     }
-    .btn-pedir:hover {
-      background: var(--roxo-medio);
-      transform: translateY(-1px);
+    .pill.tamanho.verde {
+      color: var(--verde);
+      border-color: rgba(46,125,50,.35);
+      background: #E8F5E9;
+    }
+
+    .pill.sabor {
+      font-weight: 500;
+      color: var(--roxo-escuro);
+      background: rgba(107,47,160,.07);
+      border-color: rgba(107,47,160,.18);
+    }
+    .pill.sabor.verde {
+      color: #1B5E20;
+      background: rgba(46,125,50,.07);
+      border-color: rgba(46,125,50,.2);
     }
 
     /* ─── SLOGAN ─────────────────────────────────────────────── */
@@ -613,7 +609,8 @@
       .nav-links { display: none; }
       .hero { padding: 6rem 5% 5rem; }
       .destaques { padding: 5rem 5% 4rem; }
-      .produtos { padding: 5rem 5% 4rem; }
+      .monte { padding: 5rem 5% 4rem; }
+      .monte-grid { grid-template-columns: 1fr; }
       .slogan { padding: 5rem 5%; }
       .slogan-aspas { font-size: 6rem; }
     }
@@ -696,119 +693,161 @@
 
   </section>
 
-  <!-- ══ PRODUTOS ═══════════════════════════════════════════ -->
-  <section class="produtos" id="cardapio">
+  <!-- ══ MONTE SEU AÇAÍ ════════════════════════════════════ -->
+  <section class="monte" id="cardapio">
 
-    <p class="sec-label">Nosso Cardápio</p>
-    <h2 class="sec-titulo">Escolha a sua <em>tigela</em></h2>
+    <p class="sec-label">Monte o seu</p>
+    <h2 class="sec-titulo">Cada tigela, <em>do seu jeito</em></h2>
     <p class="sec-sub">
-      Cada combinação foi criada para oferecer sabor, energia e muito prazer em cada colherada.
+      Escolha o tamanho, o sabor e os complementos. Nós montamos com carinho.
     </p>
 
-    <div class="produto-grid">
+    <div class="monte-grid">
 
-      <div class="produto-card">
-        <div class="produto-imagem">
-          🍨
-          <span class="produto-badge">⭐ Mais Pedido</span>
-        </div>
-        <div class="produto-info">
-          <h3>Açaí Tradicional</h3>
-          <p>Base cremosa de açaí puro, granola crocante, banana em rodelas e fio de mel.</p>
-          <div class="produto-footer">
-            <div class="produto-preco">
-              <small>a partir de</small>
-              R$ 18,90
-            </div>
-            <button class="btn-pedir">Pedir →</button>
+      <!-- ── AÇAÍ ── -->
+      <div class="monte-bloco">
+        <div class="monte-cabecalho">
+          <span class="monte-cabecalho-icone">🍨</span>
+          <div>
+            <h3>Açaí</h3>
+            <p>personalize sua tigela</p>
           </div>
+        </div>
+        <div class="monte-corpo">
+
+          <div>
+            <p class="monte-grupo-titulo">Tamanhos</p>
+            <div class="pills">
+              <span class="pill tamanho">330ml</span>
+              <span class="pill tamanho">440ml</span>
+              <span class="pill tamanho">550ml</span>
+              <span class="pill tamanho">700ml</span>
+              <span class="pill tamanho">1,5 litro</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="monte-grupo-titulo">Sabores</p>
+            <div class="pills">
+              <span class="pill sabor">Açaí Tradicional</span>
+              <span class="pill sabor">Açaí com Morango</span>
+              <span class="pill sabor">Açaí com Banana</span>
+              <span class="pill sabor">Açaí com Nutela</span>
+              <span class="pill sabor">Açaí com Leite Ninho</span>
+              <span class="pill sabor">Açaí Trufado</span>
+              <span class="pill sabor">Cupuaçu</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="monte-grupo-titulo">Cremes e Caldas</p>
+            <div class="pills">
+              <span class="pill">Creme de Cookies Branco</span>
+              <span class="pill">Creme de Coco Branco</span>
+              <span class="pill">Creme de Choco Wafer</span>
+              <span class="pill">Creme de Ninho</span>
+              <span class="pill">Creme Sonho de Valsa</span>
+              <span class="pill">Calda de Maracujá</span>
+              <span class="pill">Leite Condensado</span>
+              <span class="pill">Ovo Maltine</span>
+              <span class="pill">Nutela</span>
+              <span class="pill">Cereja</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="monte-grupo-titulo">Acompanhamentos</p>
+            <div class="pills">
+              <span class="pill">Leite em Pó</span>
+              <span class="pill">Granola</span>
+              <span class="pill">Castanha de Caju</span>
+              <span class="pill">Castanha de Amendoim</span>
+              <span class="pill">Paçoca</span>
+              <span class="pill">Disquete (M&amp;M)</span>
+              <span class="pill">Fine Amorinha</span>
+              <span class="pill">Fine Bananinha</span>
+              <span class="pill">Fine Beijinho</span>
+              <span class="pill">Fine Dentinho</span>
+              <span class="pill">Gotas de Chocolate</span>
+              <span class="pill">Balas de Gelatinha</span>
+              <span class="pill">Chocoboll</span>
+              <span class="pill">Farinha Láctea</span>
+              <span class="pill">Palito de Baunilha</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="monte-grupo-titulo">Frutas</p>
+            <div class="pills">
+              <span class="pill">🥝 Kiwi</span>
+              <span class="pill">🍌 Banana</span>
+              <span class="pill">🍓 Morango</span>
+              <span class="pill">🍇 Uva Verde</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="produto-card">
-        <div class="produto-imagem" style="background: linear-gradient(135deg,#EDE0F7 0%,#F5E6FF 100%);">
-          🍇
-          <span class="produto-badge verde">Novo</span>
-        </div>
-        <div class="produto-info">
-          <h3>Açaí Premium</h3>
-          <p>Base dupla cremosa, frutas vermelhas, granola especial artesanal e leite condensado.</p>
-          <div class="produto-footer">
-            <div class="produto-preco">
-              <small>a partir de</small>
-              R$ 26,90
-            </div>
-            <button class="btn-pedir">Pedir →</button>
+      <!-- ── MILK-SHAKE & SORVETE ── -->
+      <div class="monte-bloco">
+        <div class="monte-cabecalho verde">
+          <span class="monte-cabecalho-icone">🥤</span>
+          <div>
+            <h3>Milk-shake &amp; Sorvete</h3>
+            <p>no copo, do seu jeito</p>
           </div>
         </div>
-      </div>
+        <div class="monte-corpo">
 
-      <div class="produto-card">
-        <div class="produto-imagem" style="background: linear-gradient(135deg,#E8F5E9 0%,#F0FFF0 100%);">
-          🌴
-        </div>
-        <div class="produto-info">
-          <h3>Açaí Tropical</h3>
-          <p>Base com toque de coco, manga, abacaxi e farofa de tapioca. Uma viagem ao trópico.</p>
-          <div class="produto-footer">
-            <div class="produto-preco">
-              <small>a partir de</small>
-              R$ 24,90
+          <div>
+            <p class="monte-grupo-titulo verde">Tamanhos</p>
+            <div class="pills">
+              <span class="pill tamanho verde">330ml</span>
+              <span class="pill tamanho verde">440ml</span>
+              <span class="pill tamanho verde">550ml</span>
+              <span class="pill tamanho verde">700ml</span>
+              <span class="pill tamanho verde">1,5 litro</span>
             </div>
-            <button class="btn-pedir">Pedir →</button>
           </div>
-        </div>
-      </div>
 
-      <div class="produto-card">
-        <div class="produto-imagem" style="background: linear-gradient(135deg,#FFF3E0 0%,#FFF8E1 100%);">
-          💪
-          <span class="produto-badge" style="background:#B05E00;">Fitness</span>
-        </div>
-        <div class="produto-info">
-          <h3>Açaí Power</h3>
-          <p>Base proteica, pasta de amendoim, granola fitness, banana e toque de canela.</p>
-          <div class="produto-footer">
-            <div class="produto-preco">
-              <small>a partir de</small>
-              R$ 28,90
+          <div>
+            <p class="monte-grupo-titulo verde">Sabores</p>
+            <div class="pills">
+              <span class="pill sabor verde">Flocos</span>
+              <span class="pill sabor verde">Morango</span>
+              <span class="pill sabor verde">Abacaxi</span>
+              <span class="pill sabor verde">Baunilha</span>
+              <span class="pill sabor verde">Chocolate</span>
+              <span class="pill sabor verde">Coco Branco</span>
+              <span class="pill sabor verde">Ninho Trufado</span>
+              <span class="pill sabor verde">Mousse de Maracujá</span>
+              <span class="pill sabor verde">Baunilha com Morango</span>
+              <span class="pill sabor verde">Leite Condensado com Morango</span>
             </div>
-            <button class="btn-pedir">Pedir →</button>
           </div>
-        </div>
-      </div>
 
-      <div class="produto-card">
-        <div class="produto-imagem" style="background: linear-gradient(135deg,#FCE4EC 0%,#FFF0F5 100%);">
-          🍓
-        </div>
-        <div class="produto-info">
-          <h3>Açaí Kids</h3>
-          <p>Tigela pequena e fofa: base suave de açaí, morangos frescos, granola e mel.</p>
-          <div class="produto-footer">
-            <div class="produto-preco">
-              <small>a partir de</small>
-              R$ 14,90
+          <div>
+            <p class="monte-grupo-titulo verde">Acompanhamentos</p>
+            <div class="pills">
+              <span class="pill">Leite em Pó</span>
+              <span class="pill">Granola</span>
+              <span class="pill">Castanha de Caju</span>
+              <span class="pill">Castanha de Amendoim</span>
+              <span class="pill">Paçoca</span>
+              <span class="pill">Disquete (M&amp;M)</span>
+              <span class="pill">Fine Amorinha</span>
+              <span class="pill">Fine Bananinha</span>
+              <span class="pill">Fine Beijinho</span>
+              <span class="pill">Fine Dentinho</span>
+              <span class="pill">Gotas de Chocolate</span>
+              <span class="pill">Balas de Gelatinha</span>
+              <span class="pill">Chocoboll</span>
+              <span class="pill">Farinha Láctea</span>
+              <span class="pill">Palito de Baunilha</span>
             </div>
-            <button class="btn-pedir">Pedir →</button>
           </div>
-        </div>
-      </div>
 
-      <div class="produto-card">
-        <div class="produto-imagem" style="background: linear-gradient(135deg,#E3F2FD 0%,#EDE7F6 100%);">
-          🥤
-        </div>
-        <div class="produto-info">
-          <h3>Smoothie de Açaí</h3>
-          <p>Batido cremoso com leite de coco, frutas vermelhas e açaí. Refrescante e energizante.</p>
-          <div class="produto-footer">
-            <div class="produto-preco">
-              <small>a partir de</small>
-              R$ 16,90
-            </div>
-            <button class="btn-pedir">Pedir →</button>
-          </div>
         </div>
       </div>
 
