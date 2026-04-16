@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kalhambeque Burger — Feito pra quem leva a sério</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:        #d42b2b;
+      --red-dark:   #a81e1e;
+      --gray-900:   #111113;
+      --gray-800:   #1c1c1f;
+      --gray-700:   #2a2a2e;
+      --gray-600:   #3a3a3f;
+      --gray-300:   #9a9aa8;
+      --gray-100:   #e8e8ec;
+      --white:      #ffffff;
+      --font-head:  'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+      --font-body:  'Inter', 'Segoe UI', Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--gray-900);
+      color: var(--white);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Google Fonts ── */
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Inter:wght@400;500;600&display=swap');
+
+    /* ─────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 64px;
+      background: rgba(17, 17, 19, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      padding: 0.5rem 1.2rem;
+      background: var(--red);
+      color: var(--white) !important;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--red-dark) !important; color: var(--white) !important; }
+
+    /* ─────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      padding: 100px clamp(1.5rem, 7vw, 6rem) 80px;
+    }
+
+    /* faixa diagonal de textura — toque automotivo sutil */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(160deg, rgba(212,43,43,0.08) 0%, transparent 50%),
+        repeating-linear-gradient(
+          -55deg,
+          transparent,
+          transparent 28px,
+          rgba(255,255,255,0.015) 28px,
+          rgba(255,255,255,0.015) 29px
+        );
+      pointer-events: none;
+    }
+
+    /* linha vermelha de acento — como pinstripe automotivo */
+    #hero::after {
+      content: '';
+      position: absolute;
+      left: clamp(1.5rem, 7vw, 6rem);
+      top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent 5%, var(--red) 30%, var(--red) 70%, transparent 95%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      padding-left: 2.5rem;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-title .line-accent {
+      color: var(--red);
+      font-style: italic;
+    }
+
+    .hero-title .line-outline {
+      -webkit-text-stroke: 2px var(--white);
+      color: transparent;
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--gray-300);
+      max-width: 520px;
+      margin-bottom: 2.8rem;
+      line-height: 1.75;
+    }
+
+    .hero-desc strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: var(--red);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--red-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--white); }
+
+    .btn-ghost svg { transition: transform 0.2s; }
+    .btn-ghost:hover svg { transform: translateX(3px); }
+
+    /* stats row */
+    .hero-stats {
+      position: absolute;
+      bottom: 3rem;
+      right: clamp(1.5rem, 7vw, 6rem);
+      display: flex;
+      gap: 2.5rem;
+      z-index: 1;
+    }
+
+    .stat {
+      text-align: right;
+      border-right: 1px solid var(--gray-600);
+      padding-right: 1.5rem;
+    }
+
+    .stat:last-child { border-right: none; padding-right: 0; }
+
+    .stat-number {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .stat-number span { color: var(--red); }
+
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+    /* ─────────────────────────────────────────────
+       SOBRE / BRAND PRESENTATION
+    ───────────────────────────────────────────── */
+    #sobre {
+      background: var(--gray-800);
+      padding: 100px clamp(1.5rem, 7vw, 6rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* grade de fundo — detalhe automotivo tipo chapa perfurada */
+    #sobre::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 420px; height: 420px;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 22px 22px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sobre-visual {
+      position: relative;
+    }
+
+    .sobre-img-frame {
+      position: relative;
+      aspect-ratio: 4/5;
+      background: var(--gray-700);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* placeholder estético enquanto sem foto real */
+    .sobre-img-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, var(--gray-600) 25%, var(--gray-700) 25%, var(--gray-700) 50%, var(--gray-600) 50%, var(--gray-600) 75%, var(--gray-700) 75%);
+      background-size: 40px 40px;
+      opacity: 0.5;
+    }
+
+    .sobre-img-frame::after {
+      content: 'KALHAMBEQUE';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.08);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* badge flutuante */
+    .sobre-badge {
+      position: absolute;
+      bottom: -1.2rem;
+      right: -1.2rem;
+      width: 90px; height: 90px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 3px solid var(--gray-800);
+    }
+
+    .sobre-badge strong {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .sobre-badge span {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    /* linha vermelha lateral */
+    .sobre-content {
+      padding-left: 1rem;
+      border-left: 3px solid var(--red);
+    }
+
+    .sobre-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .sobre-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    .sobre-title em {
+      color: var(--red);
+      font-style: italic;
+    }
+
+    .sobre-copy {
+      color: var(--gray-300);
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 1.4rem;
+    }
+
+    .sobre-copy strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .sobre-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--red);
+      margin: 2rem 0;
+    }
+
+    /* lista de diferenciais */
+    .sobre-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-top: 2rem;
+    }
+
+    .sobre-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .item-icon {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      background: rgba(212,43,43,0.15);
+      border: 1px solid rgba(212,43,43,0.3);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.1rem;
+    }
+
+    .item-icon svg { color: var(--red); }
+
+    .item-text strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.15rem;
+    }
+
+    .item-text p {
+      font-size: 0.82rem;
+      color: var(--gray-300);
+      line-height: 1.5;
+    }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .hero-stats {
+        position: static;
+        margin-top: 3rem;
+        justify-content: flex-start;
+        gap: 1.5rem;
+      }
+
+      .stat { border-right: none; padding-right: 0; text-align: left; }
+
+      .stat-number { font-size: 1.6rem; }
+
+      .sobre-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sobre-img-frame { aspect-ratio: 4/3; }
+
+      .sobre-badge {
+        bottom: -1rem;
+        right: 0.5rem;
+      }
+
+      .sobre-content { padding-left: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#" class="nav-logo">Kalham<span>beque</span></a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Nossa história</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#contato" class="nav-cta">Peça agora</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-inner">
+
+      <p class="hero-eyebrow">Hamburgueria Artesanal</p>
+
+      <h1 class="hero-title">
+        Feito pra quem<br>
+        <span class="line-accent">leva a sério</span><br>
+        <span class="line-outline">o sabor</span>
+      </h1>
+
+      <p class="hero-desc">
+        No Kalhambeque, cada lanche sai com a precisão de quem afina motor:
+        <strong>ingredientes selecionados, blend exclusivo de carnes</strong>
+        e um processo artesanal que não abre mão de resultado.
+        Zero atalho. Zero marmita fria. Zero desculpa.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#cardapio" class="btn-primary">Ver cardápio</a>
+        <a href="#sobre" class="btn-ghost">
+          Nossa história
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">+<span>3</span>k</span>
+        <span class="stat-label">Lanches entregues</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number"><span>100</span>%</span>
+        <span class="stat-label">Carne fresca</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number"><span>1</span>ª</span>
+        <span class="stat-label">Mordida vicia</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       APRESENTAÇÃO DA MARCA
+  ══════════════════════════════════════════ -->
+  <section id="sobre">
+    <div class="sobre-grid">
+
+      <!-- Visual -->
+      <div class="sobre-visual">
+        <div class="sobre-img-frame"></div>
+        <div class="sobre-badge">
+          <strong>Art.</strong>
+          <span>feito à<br>mão</span>
+        </div>
+      </div>
+
+      <!-- Conteúdo -->
+      <div class="sobre-content">
+        <span class="sobre-eyebrow">Quem somos</span>
+
+        <h2 class="sobre-title">
+          Uma burger<br>
+          com <em>personalidade</em><br>
+          própria
+        </h2>
+
+        <p class="sobre-copy">
+          O Kalhambeque nasceu da obsessão por um lanche que <strong>realmente valha cada real</strong>.
+          Não a enésima franquia com foto bonita e sabor mediano — mas algo construído
+          com respeito pela matéria-prima e capricho em cada detalhe.
+        </p>
+
+        <p class="sobre-copy">
+          O nome vem de quem somos: diretos, sem frescura e com estilo próprio.
+          <strong>Cada lanche é montado na hora</strong>, o pão sai fresco do forno de parceiros locais
+          e a carne vem de fornecedores que a gente conhece pelo nome.
+        </p>
+
+        <div class="sobre-divider"></div>
+
+        <div class="sobre-items">
+
+          <div class="sobre-item">
+            <div class="item-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <div class="item-text">
+              <strong>Blend artesanal de carne</strong>
+              <p>Proporção exclusiva de cortes nobres, moída diariamente. Sem aditivos, sem enrolação.</p>
+            </div>
+          </div>
+
+          <div class="sobre-item">
+            <div class="item-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="item-text">
+              <strong>Feito por quem come o que faz</strong>
+              <p>A equipe prova cada receita antes de colocar no cardápio. Padrão não é opcional aqui.</p>
+            </div>
+          </div>
+
+          <div class="sobre-item">
+            <div class="item-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <div class="item-text">
+              <strong>Sem concessão no acabamento</strong>
+              <p>Do molho ao embrulho: cada lanche sai como se fosse o primeiro do dia e o único da semana.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+</body>
+</html>
